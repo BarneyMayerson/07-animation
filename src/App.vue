@@ -17,7 +17,8 @@
     @before-leave="onBeforeLeave"
     @leave="onLeave"
     @after-leave="onAfterLeave"
-    :css="false"
+    :css="true"
+    name="fade"
   >
     <h2 v-if="flag">Hey!</h2>
   </Transition>
@@ -37,18 +38,18 @@ export default {
     onBeforeEnter(el) {
       console.log("on-before-enter fired", el);
     },
-    onEnter(el, done) {
-      const animation = el.animate([
-        { transform: "scale3d(0, 0, 0)" }, 
-        {},
-      ], {
-        duration: 1000,
-      });
+    onEnter(el) {
+      // const animation = el.animate([
+      //   { transform: "scale3d(0, 0, 0)" }, 
+      //   {},
+      // ], {
+      //   duration: 1000,
+      // });
 
-      animation.onfinish = () => {
-        // alert("Enter is done");
-        done();
-      }
+      // animation.onfinish = () => {
+      //   // alert("Enter is done");
+      //   done();
+      // }
     },
     onAfterEnter(el) {
       console.log("on-after-enter fired", el);
@@ -56,18 +57,18 @@ export default {
     onBeforeLeave(el) {
       console.log("on-before-leave fired", el);
     },
-    onLeave(el, done) {
-      const animation = el.animate([
-        {},
-        { transform: "scale3d(0, 0, 0)" }, 
-      ], {
-        duration: 1000,
-      });
+    onLeave(el) {
+      // const animation = el.animate([
+      //   {},
+      //   { transform: "scale3d(0, 0, 0)" }, 
+      // ], {
+      //   duration: 1000,
+      // });
 
-      animation.onfinish = () => {
-        // alert("Leave is done");
-        done();
-      }
+      // animation.onfinish = () => {
+      //   // alert("Leave is done");
+      //   done();
+      // }
     },
     onAfterLeave(el) {
       console.log("on-after-leave fired", el);
