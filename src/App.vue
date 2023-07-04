@@ -1,9 +1,10 @@
 <template>
   <button type="button" @click="flag = !flag">Toggle</button>
 
-  <transition name="fade">
-    <h2 v-if="flag">Hello there...</h2>  
-  </transition>
+  <Transition name="fade" mode="out-in">
+    <h2 v-if="flag" key="main">Hello there...</h2>  
+    <h2 v-else key="secondary">Hello from here...</h2>  
+  </Transition>
 </template>
 
 <script>
