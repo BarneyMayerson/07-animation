@@ -1,5 +1,5 @@
 <template>
-  <button type="button" @click="flag = !flag">Toggle</button>
+  <!-- <button type="button" @click="flag = !flag">Toggle</button> -->
 
   <!-- <Transition name="fade" mode="out-in">
     <h2 v-if="flag" key="main">Hello there...</h2>  
@@ -10,7 +10,7 @@
     <h2 v-if="flag">Hey! You!</h2>  
   </Transition> -->
 
-  <Transition
+  <!-- <Transition
     @before-enter="onBeforeEnter"
     @enter="onEnter"
     @after-enter="onAfterEnter"
@@ -21,7 +21,18 @@
     name="fade"
   >
     <h2 v-if="flag">Hey!</h2>
-  </Transition>
+  </Transition> -->
+
+  <button type="button" @click="addItem">Add</button>
+  <ul>
+    <li 
+      v-for="(number, index) in numbers" 
+      :key="number"
+      @click="removeItem(index)"
+    >
+      {{ number }}
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -31,10 +42,21 @@ export default {
   data() {
     return {
       flag: true,
+      numbers: [1, 2, 3, 4, 5],
     }
   },
 
   methods: {
+    addItem() {
+      const num = Math.floor(Math.random() * 100 + 1);
+      const index = Math.floor(Math.random() * this.numbers.length);
+
+      this.numbers.splice(index, 0, num);
+    },
+    removeItem(index) {
+      this.numbers.splice(index, 1);
+    },
+
     onBeforeEnter(el) {
       console.log("on-before-enter fired", el);
     },
@@ -78,6 +100,10 @@ export default {
 </script>
 
 <style scoped>
+li {
+  font-size: 24px;
+  cursor: pointer;
+}
 
 h2 {
   width: 400px;
