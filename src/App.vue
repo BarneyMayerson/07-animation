@@ -25,13 +25,15 @@
 
   <button type="button" @click="addItem">Add</button>
   <ul>
-    <li 
-      v-for="(number, index) in numbers" 
-      :key="number"
-      @click="removeItem(index)"
-    >
-      {{ number }}
-    </li>
+    <TransitionGroup name="fade">
+      <li 
+        v-for="(number, index) in numbers" 
+        :key="number"
+        @click="removeItem(index)"
+      >
+        {{ number }}
+      </li>
+  </TransitionGroup>
   </ul>
 </template>
 
